@@ -14,7 +14,7 @@
             <div class="row form__reg"><input class="form-control" type="text" name="name" placeholder="Название мода"></div>
             <div class="row form__reg"><input class="form-control" type="url" name="url" placeholder="Ссылка на скачивание"></div>
             <div class="row form__reg"><input class="form-control" type="number" name="size" placeholder="Вес в МБ"></div>
-            <button type="submit" class="btn btn-primary" name="search">Добавить</button>
+            <button type="submit" class="btn_red btn__reg" name="submit">Добавить</button>
         </form>
     </div>
 </body>
