@@ -21,10 +21,11 @@ mysqli_close($link);
 $link = mysqli_connect($servername, $username, $password, $dbName);
 
 $sql = "CREATE TABLE IF NOT EXISTS mods(
-  game  INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  game VARCHAR(50) NOT NULL,
   name VARCHAR(30) NOT NULL,
-  rating VARCHAR(10) NOT NULL,
-  downloads VARCHAR(10) NOT NULL
+  size VARCHAR(10) NOT NULL,
+  url VARCHAR(100) NOT NULL
 )";
 
 
