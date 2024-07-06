@@ -1,18 +1,4 @@
-<!-- PHP code for handling form submission and displaying results -->
-    <?php
-    $link = mysqli_connect('127.0.0.1', 'root', 'kali', 'mods'); // Connecting to the database
-	
-	$id = $_GET['id'];
 
-	$sql = "SELECT * FROM mods WHERE id=$id";
-
-	$res = mysqli_query($link, $sql);
-  
-	$rows = mysqli_fetch_array($res);
-	$name = $rows['name'];
-	$discription = $rows['discription'];
-
-    ?>
 
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
