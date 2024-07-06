@@ -14,7 +14,7 @@
 <body>
     <h1>Зарегистрируйтесь!</h1>
 
-    <form method="POST">
+    <form method="POST" action="registration.php">
             <div class="row form__reg"><input class="form-control" type="text" name="username" placeholder="Никнейм"></div>
             <div class="row form__reg"><input class="form-control" type="email" name="email" placeholder="Почта"></div>
             <div class="row form__reg"><input class="form-control" type="text" name="password" placeholder="Пароль"></div>
