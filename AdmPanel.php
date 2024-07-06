@@ -9,7 +9,7 @@
     <h1>Загрузка модификаций</h1>
     <div class="container">
         <!-- Search form -->
-        <form method="POST">
+        <form method="POST" action="db.php">
             <div class="row form__reg"><input class="form-control" type="text" name="game" placeholder="Название игры"></div>
             <div class="row form__reg"><input class="form-control" type="text" name="name" placeholder="Название мода"></div>
             <div class="row form__reg"><input class="form-control" type="url" name="url" placeholder="Ссылка на скачивание"></div>
