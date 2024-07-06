@@ -1,7 +1,5 @@
 <!-- PHP code for handling form submission and displaying results -->
     <?php
-    require_once('db.php'); // Including the database connection file
-
     $link = mysqli_connect('127.0.0.1', 'root', 'kali', 'mods'); // Connecting to the database
 	
 	$id = $_GET['id'];
