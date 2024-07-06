@@ -30,8 +30,19 @@
 <body>
    
 <?php 
-		echo "<h1>$name</h1>";
-		echo "<p>$discription</p>";
+	$link = mysqli_connect('127.0.0.1', 'root', 'kali', 'mods');
+
+	$sql = "SELECT * FROM mods";
+	$res = mysqli_query($link, $sql);
+
+		if (mysqli_num_rows($res) >  0) {
+            while ($post = mysqli_fetch_array($res)) {
+                echo "<a href='/Modpage.php?id=" . $post["id"] . "'>" . $post['game'] . "</a><br>";
+            }
+           } else {
+                echo "Записей пока нет";
+           }
+
 ?>
    
 </body>
