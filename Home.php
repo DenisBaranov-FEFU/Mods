@@ -59,9 +59,9 @@
         if (mysqli_num_rows($result) > 0) { // Checking if any results were returned
             echo "<div class='container mt-4'>";
             echo "<table class='table table-bordered'>";
-            echo "<thead><tr><th>Название</th><th>Рейтинг</th><th>Скачивания</th><th>Размер (МБ)</th></tr></thead><tbody>";
+            echo "<thead><tr><th>Игра</th><th>Название мода</th><th>Ссылка на скачивание</th><th>Размер (МБ)</th></tr></thead><tbody>";
             while ($row = mysqli_fetch_assoc($result)) { // Displaying the results in a table
-                echo "<tr><td>{$row['name']}</td><td>{$row['rating']}</td><td>{$row['url']}</td><td>{$row['size']}</td></tr>";
+                echo "<tr><td>{$row['game']}</td><td>{$row['name']}</td><td>{$row['url']}</td><td>{$row['size']}</td></tr>";
             }
             echo "</tbody></table></div>";
         } else {
