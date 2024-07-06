@@ -17,9 +17,9 @@
     <div class="container">
         <!-- Search form -->
         <form method="POST">
-            <div class="row form__reg"><input class="form-control" type="number" name="min_rating" placeholder="Рейтинг от (0-5)"></div>
-            <div class="row form__reg"><input class="form-control" type="number" name="max_rating" placeholder="Рейтинг до (0-5)"></div>
-            <div class="row form__reg"><input class="form-control" type="number" name="downloads" placeholder="Количество скачиваний"></div>
+            <div class="row form__reg"><input class="form-control" type="number" name="min_rating" placeholder="Минимальный рейтинг (0-5)"></div>
+            <div class="row form__reg"><input class="form-control" type="number" name="max_rating" placeholder="Максимальный рейтинг (0-5)"></div>
+            <div class="row form__reg"><input class="form-control" type="number" name="url" placeholder="Ссылка"></div>
             <div class="row form__reg"><input class="form-control" type="number" name="size" placeholder="Вес в МБ"></div>
             <button type="submit" class="btn btn-primary" name="search">Искать!</button>
         </form>
@@ -34,7 +34,7 @@
     if (isset($_POST['search'])) { // Checking if the search button was clicked
         $min_rating = $_POST['min_rating'];
         $max_rating = $_POST['max_rating'];
-        $downloads = $_POST['downloads'];
+        $url = $_POST['url'];
         $size = $_POST['size'];
 
         // SQL query to fetch data from the database
@@ -47,8 +47,8 @@
         if (!empty($max_rating)) {
             $sql .= " AND rating <= $max_rating";
         }
-        if (!empty($downloads)) {
-            $sql .= " AND downloads >= $downloads";
+        if (!empty($url)) {
+            $sql .= " AND url >= $url";
         }
         if (!empty($size)) {
             $sql .= " AND size <= $size";
@@ -61,7 +61,7 @@
             echo "<table class='table table-bordered'>";
             echo "<thead><tr><th>Название</th><th>Рейтинг</th><th>Скачивания</th><th>Размер (МБ)</th></tr></thead><tbody>";
             while ($row = mysqli_fetch_assoc($result)) { // Displaying the results in a table
-                echo "<tr><td>{$row['name']}</td><td>{$row['rating']}</td><td>{$row['downloads']}</td><td>{$row['size']}</td></tr>";
+                echo "<tr><td>{$row['name']}</td><td>{$row['rating']}</td><td>{$row['url']}</td><td>{$row['size']}</td></tr>";
             }
             echo "</tbody></table></div>";
         } else {
