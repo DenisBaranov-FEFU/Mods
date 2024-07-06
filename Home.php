@@ -61,7 +61,7 @@
             echo "<table class='table table-bordered'>";
             echo "<thead><tr><th>Игра</th><th>Название мода</th><th>Ссылка на скачивание</th><th>Размер (МБ)</th></tr></thead><tbody>";
             while ($row = mysqli_fetch_assoc($result)) { // Displaying the results in a table
-                echo "<tr><td>{$row['game']}</td><td>{$row['name']}</td><td>{$row['url']}</td><td>{$row['size']}</td></tr>";
+                echo "<tr><td>{$row['<a href='/Mod.php?id=" . $post["id"] . "'>" . $post['game'] . "</a><br>']}</td><td>{$row['name']}</td><td>{$row['url']}</td><td>{$row['size']}</td></tr>";
             }
             echo "</tbody></table></div>";
         } else {
