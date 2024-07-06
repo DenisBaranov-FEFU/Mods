@@ -25,7 +25,8 @@ $sql = "CREATE TABLE IF NOT EXISTS mods(
   game VARCHAR(50) NOT NULL,
   name VARCHAR(30) NOT NULL,
   size VARCHAR(10) NOT NULL,
-  url VARCHAR(100) NOT NULL
+  url VARCHAR(100) NOT NULL,
+  discription VARCHAR(1000) NOT NULL
 )";
 
 if (!mysqli_query($link, $sql)) {
