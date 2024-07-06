@@ -17,6 +17,19 @@
     <div class="container">
         <!-- Search form -->
         <form method="POST">
+            <div class="row form__reg">
+                <select class="form-control" name="game">
+                    <option value="">Выберите игру</option>
+                    <?php
+                    require_once('db.php'); // Including the database connection file
+                    $link = mysqli_connect('127.0.0.1', 'root', 'kali', 'mods'); // Connecting to the database
+                    $games_result = mysqli_query($link, "SELECT DISTINCT game FROM mods");
+                    while ($game_row = mysqli_fetch_assoc($games_result)) {
+                        echo "<option value=\"{$game_row['game']}\">{$game_row['game']}</option>";
+                    }
+                    ?>
+                </select>
+            </div>
             <div class="row form__reg"><input class="form-control" type="number" name="min_rating" placeholder="Минимальный рейтинг (0-5)"></div>
             <div class="row form__reg"><input class="form-control" type="number" name="max_rating" placeholder="Максимальный рейтинг (0-5)"></div>
             <div class="row form__reg"><input class="form-control" type="text" name="url" placeholder="Ссылка"></div>
@@ -27,15 +40,12 @@
 
     <!-- PHP code for handling form submission and displaying results -->
     <?php
-    require_once('db.php'); // Including the database connection file
-
-    $link = mysqli_connect('127.0.0.1', 'root', 'kali', 'mods'); // Connecting to the database
-
     if (isset($_POST['search'])) { // Checking if the search button was clicked
         $min_rating = $_POST['min_rating'];
         $max_rating = $_POST['max_rating'];
         $url = $_POST['url'];
         $size = $_POST['size'];
+        $game = $_POST['game'];
 
         // SQL query to fetch data from the database
         $sql = "SELECT * FROM mods WHERE 1=1";
@@ -52,6 +62,9 @@
         }
         if (!empty($size)) {
             $sql .= " AND size <= $size";
+        }
+        if (!empty($game)) {
+            $sql .= " AND game = '$game'";
         }
 
         $result = mysqli_query($link, $sql); // Executing the SQL query
