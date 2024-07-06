@@ -20,7 +20,7 @@
         <div class="row form__reg"><input class="form-control" type="password" name="password" placeholder="Пароль"></div>
         <div class="row form__reg"><input class="form-control" type="password" name="pwd_check" placeholder="Повторите пароль"></div>
         
-        <button type="submit" class="btn btn-primary" name="search">Подтвердить</button>
+        <button type="submit" class="btn btn-primary" name="submit">Подтвердить</button>
     </form>
 
     <!-- Link to Bootstrap JS -->
@@ -28,7 +28,7 @@
 </body>
 </html>
 <?php
-if (isset($_POST['search'])) {
+if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $username = $_POST['username'];
     $password = $_POST['password'];
