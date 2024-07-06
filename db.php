@@ -30,8 +30,36 @@ $sql = "CREATE TABLE IF NOT EXISTS mods(
 )";
 
 if (!mysqli_query($link, $sql)) {
-  echo "Не удалось создать таблицу mods";
+  echo "Не удалось создать таблицу users";
 }
+
+$link = mysqli_connect($servername, $username, $password);
+
+if (!$link) {
+  die("Ошибка подключения: " . mysqli_connect_error());
+}
+
+$sql = "CREATE DATABASE IF NOT EXISTS users";
+
+if (!mysqli_query($link, $sql)) {
+  echo "Не удалось создать БД";
+}
+
+mysqli_close($link);
+
+
+$sql = "CREATE TABLE IF NOT EXISTS users(
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  username VARCHAR(15) NOT NULL,
+  password VARCHAR(30) NOT NULL,
+  email VARCHAR(30) NOT NULL,
+)";
+
+if (!mysqli_query($link, $sql)) {
+  echo "Не удалось создать таблицу users";
+}
+
+
 
 mysqli_close($link);
 ?>
