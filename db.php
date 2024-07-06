@@ -6,11 +6,11 @@ $dbName = "mods";
 
 $link = mysqli_connect($servername, $username, $password);
 
-if (!link) {
-  die("Ошибка подключения: " . mysqli_connection_error());
+if (!$link) {
+  die("Ошибка подключения: " . mysqli_connect_error());
 }
 
-$sql = "CREATE DATABASE IF NOT EXIST $dbName";
+$sql = "CREATE DATABASE IF NOT EXISTS $dbName";
 
 if (!mysqli_query($link, $sql)) {
   echo "Не удалось создать БД";
@@ -28,12 +28,9 @@ $sql = "CREATE TABLE IF NOT EXISTS mods(
   url VARCHAR(100) NOT NULL
 )";
 
-
-if(!mysqli_qyery($link, $sql)) {
+if (!mysqli_query($link, $sql)) {
   echo "Не удалось создать таблицу mods";
 }
 
 mysqli_close($link);
-
-
 ?>
