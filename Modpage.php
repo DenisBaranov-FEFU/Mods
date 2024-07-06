@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <!-- PHP code for handling form submission and displaying results -->
     <?php
     require_once('db.php'); // Including the database connection file
@@ -8,7 +6,7 @@
 	
 	$id = $_GET['id'];
 
-	$sql = "SELECT * FROM posts WHERE id=$id";
+	$sql = "SELECT * FROM mods WHERE id=$id";
 
 	$res = mysqli_query($link, $sql);
   
@@ -18,6 +16,7 @@
 
     ?>
 
+<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
