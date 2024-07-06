@@ -10,8 +10,6 @@ $rows = mysqli_fetch_array($res);
 $name = $rows['name'];
 $discription = $rows['discription'];
 
-
-mysqli_close($link);
 ?>
 
 
