@@ -46,10 +46,6 @@ if (isset($_POST['submit'])) {
             die('Ошибка подключения к базе данных: ' . mysqli_connect_error());
         }
 
-        $email = mysqli_real_escape_string($link, $email);
-        $username = mysqli_real_escape_string($link, $username);
-        $password = mysqli_real_escape_string($link, $password);
-
         $sql = "INSERT INTO users (email, username, password) VALUES ('$email', '$username', '$password')";
 
         if (!mysqli_query($link, $sql)) {
