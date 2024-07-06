@@ -2,7 +2,6 @@
 
  <?php
 $link = mysqli_connect('127.0.0.1', 'root', 'kali', 'mods'); // Connecting to the database
-
 $id = $_GET['id'];
 $sql = "SELECT * FROM mods WHERE id=$id";
 $res = mysqli_query($link, $sql);
@@ -17,7 +16,7 @@ $discription = $rows['discription'];
 
 <!DOCTYPE html>
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <title><?php print "$name" ?></title>
