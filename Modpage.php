@@ -29,7 +29,7 @@
 </head>
 <body>
    
-<? php 
+<?php 
 		echo "<h1>$name</h1>";
 		echo "<p>$discription</p>";
 ?>
