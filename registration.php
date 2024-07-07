@@ -52,6 +52,12 @@ if (isset($_POST['submit'])) {
             echo "Не удалось добавить пользователя: " . mysqli_error($link);
         } else {
             echo "Пользователь успешно зарегистрирован!";
+				if (mysqli_num_rows($result) == 1) {
+					setcookie("User", $user, time()+7200);
+					header('Location: login.php');
+				} 
+		}
+
         }
 
         mysqli_close($link);
