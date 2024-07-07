@@ -15,9 +15,9 @@
     <h1>Зарегистрируйтесь!</h1>
 
     <form method="POST" action="registration.php">
-        <div class="row form__reg"><input class="form-control" type="text" name="username" placeholder="Никнейм"></div>
+        <div class="row form__reg"><input class="form-control" type="text" name="user" placeholder="Никнейм"></div>
         <div class="row form__reg"><input class="form-control" type="email" name="email" placeholder="Почта"></div>
-        <div class="row form__reg"><input class="form-control" type="password" name="password" placeholder="Пароль"></div>
+        <div class="row form__reg"><input class="form-control" type="password" name="pass" placeholder="Пароль"></div>
         <div class="row form__reg"><input class="form-control" type="password" name="pwd_check" placeholder="Повторите пароль"></div>
         
         <button type="submit" class="btn btn-primary" name="submit">Подтвердить</button>
@@ -30,15 +30,15 @@
 <?php
 if (isset($_POST['submit'])) {
     $email = $_POST['email'];
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $username = $_POST['user'];
+    $password = $_POST['pass'];
     $pwd_check = $_POST['pwd_check'];
 
-    if (!$email || !$username || !$password || !$pwd_check) {
+    if (!$email || !$user || !$pass || !$pwd_check) {
         die('Пожалуйста, введите все значения!');
     }
 
-    if ($password == $pwd_check) {
+    if ($pass == $pwd_check) {
         require_once('db.php');
         $link = mysqli_connect('127.0.0.1', 'root', 'kali', 'users');
 
@@ -46,7 +46,7 @@ if (isset($_POST['submit'])) {
             die('Ошибка подключения к базе данных: ' . mysqli_connect_error());
         }
 
-        $sql = "INSERT INTO users (email, username, password) VALUES ('$email', '$username', '$password')";
+        $sql = "INSERT INTO users (email, username, password) VALUES ('$email', '$user', '$pass')";
 
         if (!mysqli_query($link, $sql)) {
             echo "Не удалось добавить пользователя: " . mysqli_error($link);
