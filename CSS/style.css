@@ -8,9 +8,7 @@ h1 {
     text-align: center;
     margin-top: 20px;
 }
-.text {
-	color: #f1f1f1; 
-}
+
 .form__reg {
     display: flex;
     flex-wrap: nowrap;
