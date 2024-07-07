@@ -58,10 +58,11 @@ if (isset($_POST['submit'])) {
 				}
 
 			}
+			else {
+				die("Пароли должны совпадать!");
+			}
 
 			mysqli_close($link);
-		} else {
-			die("Пароли должны совпадать!");
-		}
+		} 
 
 ?>
