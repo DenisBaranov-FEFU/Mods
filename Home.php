@@ -17,24 +17,28 @@
     <div class="container">
         <!-- Search form -->
         <form method="POST">
-            <div class="row form__reg">
-                <select class="form-control" name="game">
-                    <option value="">Выберите игру</option>
-                    <?php
-                    require_once('db.php'); // Including the database connection file
-                    $link = mysqli_connect('127.0.0.1', 'root', 'kali', 'mods'); // Connecting to the database
-                    $games_result = mysqli_query($link, "SELECT DISTINCT game FROM mods");
-                    while ($game_row = mysqli_fetch_assoc($games_result)) {
-                        echo "<option value=\"{$game_row['game']}\">{$game_row['game']}</option>";
-                    }
-                    ?>
-                </select>
+            <div class="row form__reg mb-3">
+                <div class="col">
+                    <select class="form-control" name="game">
+                        <option value="">Выберите игру</option>
+                        <?php
+                        require_once('db.php'); // Including the database connection file
+                        $link = mysqli_connect('127.0.0.1', 'root', 'kali', 'mods'); // Connecting to the database
+                        $games_result = mysqli_query($link, "SELECT DISTINCT game FROM mods");
+                        while ($game_row = mysqli_fetch_assoc($games_result)) {
+                            echo "<option value=\"{$game_row['game']}\">{$game_row['game']}</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
+                <div class="col"><input class="form-control" type="number" name="min_rating" placeholder="Минимальный рейтинг (0-5)"></div>
+                <div class="col"><input class="form-control" type="number" name="max_rating" placeholder="Максимальный рейтинг (0-5)"></div>
+                <div class="col"><input class="form-control" type="text" name="url" placeholder="Ссылка"></div>
+                <div class="col"><input class="form-control" type="number" name="size" placeholder="Вес в МБ"></div>
+                <div class="col">
+                    <button type="submit" class="btn btn-primary w-100" name="search">Искать!</button>
+                </div>
             </div>
-            <div class="row form__reg"><input class="form-control" type="number" name="min_rating" placeholder="Минимальный рейтинг (0-5)"></div>
-            <div class="row form__reg"><input class="form-control" type="number" name="max_rating" placeholder="Максимальный рейтинг (0-5)"></div>
-            <div class="row form__reg"><input class="form-control" type="text" name="url" placeholder="Ссылка"></div>
-            <div class="row form__reg"><input class="form-control" type="number" name="size" placeholder="Вес в МБ"></div>
-            <button type="submit" class="btn btn-primary" name="search">Искать!</button>
         </form>
     </div>
 
@@ -71,7 +75,7 @@
 
         if (mysqli_num_rows($result) > 0) { // Checking if any results were returned
             echo "<div class='container mt-4'>";
-            echo "<table class='table table-bordered'>";
+            echo "<table class='table table-dark table-bordered'>";
             echo "<thead><tr><th>Игра</th><th>Название мода</th><th>Ссылка на скачивание</th><th>Размер (МБ)</th></tr></thead><tbody>";
             while ($row = mysqli_fetch_assoc($result)) { // Displaying the results in a table
                 echo "<tr><td>{$row['game']}</td><td><a href='/Mod.php?id={$row['id']}'>{$row['name']}</a></td><td>{$row['url']}</td><td>{$row['size']}</td></tr>";
