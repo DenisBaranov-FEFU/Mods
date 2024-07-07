@@ -31,10 +31,10 @@
                         ?>
                     </select>
                 </div>
-                <div class="col"><input class="form-control" type="number" name="min_rating" color ="white" placeholder="Рейтинг от (0-5)"></div>
+                <div class="col"><input class="form-control" type="number" name="min_rating" placeholder="Рейтинг от (0-5)"></div>
                 <div class="col"><input class="form-control" type="number" name="max_rating" placeholder="Рейтинг  до (0-5)"></div>
                 <div class="col"><input class="form-control" type="number" name="down_count" placeholder="Кол-во скачиваний"></div>
-                <div class="col"><input class="form-control" type="number" name="size" placeholder="Вес в МБ"></div>
+                <div class="col"><input class="form-control" type="number" name="size" placeholder="Вес в МБ" style="color: #f1f1f1;"></div>
                 <div class="col">
                     <button type="submit" class="btn btn-primary w-100" name="search">Искать!</button>
                 </div>
