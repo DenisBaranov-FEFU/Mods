@@ -27,14 +27,12 @@ h1 {
 .form__reg .col:last-child {
     margin-right: 0;
 }
-.form-control::placeholder{
-	color: #f1f1f1;
-	opacity: 1;
-}
+
 .form-control {
     background-color: #333;
     color: #f1f1f1;
     border: 1px solid #444;
+	opacity: 1;
 }
 
 .btn-primary {
