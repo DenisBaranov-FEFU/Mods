@@ -31,9 +31,9 @@
                         ?>
                     </select>
                 </div>
-                <div class="col"><input class="form-control" type="number" name="min_rating" placeholder="Минимальный рейтинг (0-5)"></div>
-                <div class="col"><input class="form-control" type="number" name="max_rating" placeholder="Максимальный рейтинг (0-5)"></div>
-                <div class="col"><input class="form-control" type="text" name="url" placeholder="Ссылка"></div>
+                <div class="col"><input class="form-control" type="number" name="min_rating" placeholder="Рейтинг от (0-5)"></div>
+                <div class="col"><input class="form-control" type="number" name="max_rating" placeholder="Рейтинг  до (0-5)"></div>
+                <div class="col"><input class="form-control" type="number" name="down_count" placeholder="Кол-во скачиваний"></div>
                 <div class="col"><input class="form-control" type="number" name="size" placeholder="Вес в МБ"></div>
                 <div class="col">
                     <button type="submit" class="btn btn-primary w-100" name="search">Искать!</button>
@@ -47,7 +47,7 @@
     if (isset($_POST['search'])) { // Checking if the search button was clicked
         $min_rating = $_POST['min_rating'];
         $max_rating = $_POST['max_rating'];
-        $url = $_POST['url'];
+        $down_count = $_POST['down_count'];
         $size = $_POST['size'];
         $game = $_POST['game'];
 
@@ -61,8 +61,8 @@
         if (!empty($max_rating)) {
             $sql .= " AND rating <= $max_rating";
         }
-        if (!empty($url)) {
-            $sql .= " AND url >= $url";
+        if (!empty($down_count)) {
+            $sql .= " AND down_count >= $down_count";
         }
         if (!empty($size)) {
             $sql .= " AND size <= $size";
@@ -76,9 +76,9 @@
         if (mysqli_num_rows($result) > 0) { // Checking if any results were returned
             echo "<div class='container mt-4'>";
             echo "<table class='table table-dark table-bordered'>";
-            echo "<thead><tr><th>Игра</th><th>Название мода</th><th>Ссылка на скачивание</th><th>Размер (МБ)</th></tr></thead><tbody>";
+            echo "<thead><tr><th>Игра</th><th>Название мода</th><th>Описание</th><th>Размер (МБ)</th></tr></thead><tbody>";
             while ($row = mysqli_fetch_assoc($result)) { // Displaying the results in a table
-                echo "<tr><td>{$row['game']}</td><td><a href='/Mod.php?id={$row['id']}'>{$row['name']}</a></td><td>{$row['url']}</td><td>{$row['size']}</td></tr>";
+                echo "<tr><td>{$row['game']}</td><td><a href='/Mod.php?id={$row['id']}'>{$row['name']}</a></td><td>{$row['discription']}</td><td>{$row['size']}</td></tr>";
             }
             echo "</tbody></table></div>";
         } else {
