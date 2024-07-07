@@ -27,41 +27,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Jr4kRk5zoz4PoKLjWnDczpYeFZLmk/jM1AqN9e+uxDxMC+yr1E0TZMZpVKMp4+ewC" crossorigin="anonymous"></script>
 </body>
 </html>
-<?php
-if (isset($_POST['submit'])) {
-    $email = $_POST['email'];
-    $user = $_POST['user'];
-    $pass = $_POST['pass'];
-    $pwd_check = $_POST['pwd_check'];
 
-    if (!$email || !$user || !$pass || !$pwd_check) {
-        die('Пожалуйста, введите все значения!');
-    }
 
-    if ($pass == $pwd_check) {
-        require_once('db.php');
-        $link = mysqli_connect('127.0.0.1', 'root', 'kali', 'users');
-
-        if (!$link) {
-            die('Ошибка подключения к базе данных: ' . mysqli_connect_error());
-        }
-
-        $sql = "INSERT INTO users (email, username, password) VALUES ('$email', '$user', '$pass')";
-
-        if (!mysqli_query($link, $sql)) {
-            echo "Не удалось добавить пользователя: " . mysqli_error($link);
-        } 
-		else 
-		{
-				echo "Пользователь успешно зарегистрирован!";
-					header('Location: login.php');
-		}
-
-        }
-
-        mysqli_close($link);
-    } else {
-        die("Пароли должны совпадать!");
-    }
-}
-?>
