@@ -30,8 +30,8 @@
 <?php
 if (isset($_POST['submit'])) {
     $email = $_POST['email'];
-    $username = $_POST['user'];
-    $password = $_POST['pass'];
+    $user = $_POST['user'];
+    $pass = $_POST['pass'];
     $pwd_check = $_POST['pwd_check'];
 
     if (!$email || !$user || !$pass || !$pwd_check) {
