@@ -17,6 +17,8 @@
         <form method="POST" action="AdmPanel.php">
             <div class="row form__reg"><input class="form-control" type="text" name="game" placeholder="Название игры"></div>
             <div class="row form__reg"><input class="form-control" type="text" name="name" placeholder="Название мода"></div>
+            <div class="row form__reg"><input class="form-control" type="number" name="rating" placeholder="Рейтинг"></div>
+            <div class="row form__reg"><input class="form-control" type="number" name="down_check" placeholder="Кол-во скачиваний"></div>
             <div class="row form__reg"><input class="form-control" type="text" name="discription" placeholder="Описание мода"></div>
             <div class="row form__reg"><input class="form-control" type="url" name="url" placeholder="Ссылка на скачивание"></div>
             <div class="row form__reg"><input class="form-control" type="number" name="size" placeholder="Вес в МБ"></div>
@@ -38,13 +40,15 @@ if (isset($_POST['submit'])) { // Checking if the submit button was clicked
     $name = $_POST['name'];
     $discription = $_POST['discription'];
     $url = $_POST['url'];
+    $rating = $_POST['rating'];
+    $down_check = $_POST['down_check'];
     $size = $_POST['size'];
 
-    if (!$game || !$name || !$url || !$size) {
+    if (!$game || !$name || !$url || !$size || $down_check || $rating) {
         die('Пожалуйста введите все значения!');
     }
 
-    $sql = "INSERT INTO mods (game, name, url, size, discription) VALUES ('$game', '$name', '$url', '$size', '$discription')";
+    $sql = "INSERT INTO mods (game, name, url, size, discription) VALUES ('$game', '$name', '$url', '$size', '$discription', '$down_check', '$rating')";
 
     if (!mysqli_query($link, $sql)) {
         echo "Не удалось добавить мод";
