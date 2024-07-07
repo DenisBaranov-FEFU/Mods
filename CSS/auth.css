@@ -1,4 +1,4 @@
-/* Custom CSS for Mods Page */
+/* Custom CSS for Registration Page */
 
 /* General styles */
 body {
@@ -11,7 +11,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
+    height: 100vh;
 }
 
 /* Heading style */
@@ -20,27 +20,16 @@ h1 {
     font-size: 2.5rem;
 }
 
-/* Container styles */
-.container {
-    width: 80%;
+/* Form styles */
+form {
     background-color: #3c3c3c;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-/* Form styles */
-form {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
 .row.form__reg {
-    flex: 1;
-    min-width: 150px;
-    margin: 10px 5px;
+    margin-bottom: 15px;
 }
 
 .form-control {
@@ -48,12 +37,11 @@ form {
     border: none;
     color: #ffffff;
     border-radius: 4px;
-    height: 38px;
 }
 
-    .form-control::placeholder {
-        color: #cccccc;
-    }
+.form-control::placeholder {
+    color: #cccccc;
+}
 
 /* Button styles */
 .btn-primary {
@@ -65,31 +53,25 @@ form {
     transition: background-color 0.3s ease;
 }
 
-    .btn-primary:hover {
-        background-color: #6c6c6c;
-    }
+.btn-primary:hover {
+    background-color: #6c6c6c;
+}
 
-/* Table styles */
-.table {
-    background-color: #4c4c4c;
+/* Link styles */
+a {
     color: #ffffff;
+    text-decoration: none;
+    margin-top: 10px;
+    display: inline-block;
 }
 
-.table-bordered {
-    border: 1px solid #5c5c5c;
-}
-
-.table thead th {
-    background-color: #5c5c5c;
-    border-bottom: 2px solid #6c6c6c;
-}
-
-.table tbody td {
-    border: 1px solid #6c6c6c;
+a:hover {
+    text-decoration: underline;
 }
 
 /* Additional spacing for visual balance */
-.container p {
+form a {
     margin-top: 15px;
+    display: block;
     text-align: center;
 }
