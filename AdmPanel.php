@@ -59,4 +59,37 @@ if (isset($_POST['submit'])) { // Checking if the submit button was clicked
 
 mysqli_close($link);
 ?>
+<?php
+require_once('db.php'); // Including the database connection file
+
+$link = mysqli_connect('127.0.0.1', 'root', 'kali', 'mods'); // Connecting to the database
+
+if (!$link) {
+    die('Ошибка подключения: ' . mysqli_connect_error());
+}
+
+if (isset($_POST['submit'])) { // Checking if the submit button was clicked
+    $game = $_POST['game'];
+    $name = $_POST['name'];
+    $discription = $_POST['discription'];
+    $url = $_POST['url'];
+    $rating = $_POST['rating'];
+    $down_check = $_POST['down_check'];
+    $size = $_POST['size'];
+
+    if (empty($game) || empty($name) || empty($url) || empty($size) || empty($down_check) || empty($rating)) {
+        die('Пожалуйста, введите все значения!');
+    }
+
+    $sql = "INSERT INTO mods (game, name, url, size, discription, down_check, rating) VALUES ('$game', '$name', '$url', '$size', '$discription', '$down_check', '$rating')";
+
+    if (!mysqli_query($link, $sql)) {
+        echo "Не удалось добавить мод: " . mysqli_error($link);
+    } else {
+        echo "Мод успешно добавлен";
+    }
+}
+
+mysqli_close($link);
+?>
 
