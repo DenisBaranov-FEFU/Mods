@@ -22,7 +22,8 @@
         
         <button type="submit" class="btn btn-primary" name="submit">Подтвердить</button>
     </form>
-
+	
+	<div><a href="login.php"Уже зарегистрированы?</a></div>
     <!-- Link to Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Jr4kRk5zoz4PoKLjWnDczpYeFZLmk/jM1AqN9e+uxDxMC+yr1E0TZMZpVKMp4+ewC" crossorigin="anonymous"></script>
 </body>
