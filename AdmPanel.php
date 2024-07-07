@@ -9,49 +9,44 @@
 </head>
 <body>
     <h1>Загрузка модификаций</h1>
-   <div class="container">
+    <div class="container">
         <!-- Search form -->
         <form method="POST" action="AdmPanel.php">
             <div class="row form__reg"><input class="form-control" type="text" name="game" placeholder="Название игры"></div>
             <div class="row form__reg"><input class="form-control" type="text" name="name" placeholder="Название мода"></div>
-            <div class="row form__reg"><input class="form-control" type="number" name="rating" placeholder="Рейтинг"></div>
-            <div class="row form__reg"><input class="form-control" type="number" name="down_check" placeholder="Кол-во скачиваний"></div>
             <div class="row form__reg"><input class="form-control" type="text" name="discription" placeholder="Описание мода"></div>
             <div class="row form__reg"><input class="form-control" type="url" name="url" placeholder="Ссылка на скачивание"></div>
             <div class="row form__reg"><input class="form-control" type="number" name="size" placeholder="Вес в МБ"></div>
+            <div class="row form__reg"><input class="form-control" type="number" step="0.1" name="rating" placeholder="Рейтинг"></div>
+            <div class="row form__reg"><input class="form-control" type="number" name="download_count" placeholder="Количество скачиваний"></div>
             <button type="submit" class="btn_red btn__reg" name="submit">Добавить</button>
         </form>
     </div>
 </body>
 </html>
 
-
 <?php
-require_once('db.php'); // Подключение файла с базой данных
+require_once('db.php'); // Including the database connection file
 
-$link = mysqli_connect('127.0.0.1', 'root', 'kali', 'mods'); // Подключение к базе данных
+$link = mysqli_connect('127.0.0.1', 'root', 'kali', 'mods'); // Connecting to the database
 
-if (!$link) {
-    die('Ошибка подключения: ' . mysqli_connect_error());
-}
-
-if (isset($_POST['submit'])) { 
+if (isset($_POST['submit'])) { // Checking if the submit button was clicked
     $game = $_POST['game'];
     $name = $_POST['name'];
     $discription = $_POST['discription'];
     $url = $_POST['url'];
-    $rating = $_POST['rating'];
-    $down_count = $_POST['down_count'];
     $size = $_POST['size'];
+    $rating = $_POST['rating'];
+    $download_count = $_POST['download_count'];
 
-    if (empty($game) || empty($name) || empty($url) || empty($size) || empty($down_count) || empty($rating)) {
+    if (!$game || !$name || !$url || !$size || !$rating || !$download_count) {
         die('Пожалуйста, введите все значения!');
     }
 
-    $sql = "INSERT INTO mods (game, name, url, size, discription, down_count, rating) VALUES ('$game', '$name', '$url', '$size', '$discription', '$down_count', '$rating')";
+    $sql = "INSERT INTO mods (game, name, url, size, discription, rating, download_count) VALUES ('$game', '$name', '$url', '$size', '$discription', '$rating', '$download_count')";
 
     if (!mysqli_query($link, $sql)) {
-        echo "Не удалось добавить мод: " . mysqli_error($link);
+        echo "Не удалось добавить мод";
     } else {
         echo "Мод успешно добавлен";
     }
@@ -59,4 +54,3 @@ if (isset($_POST['submit'])) {
 
 mysqli_close($link);
 ?>
-
