@@ -1,3 +1,7 @@
+:root {
+    --bs-secondary-color: #f1f1f1; /* Установить переменную в белый цвет */
+}
+
 body {
     background-color: #1c1c1c;
     color: #f1f1f1;
